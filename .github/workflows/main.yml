@@ -1,0 +1,17 @@
+name: orgacomp grader
+
+on: [push, pull_request]
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: test
+    steps:
+    - name: Grading step
+      id: grade
+      uses: pamoreno/grader-action@v1
+      with:
+        command: 'echo "::set-output name=result::$(ls -lha)"'
+    # Use the output from the `hello` step
+    - name: out log
+      run: echo "The result was ${{ steps.grade.outputs.result }}"

@@ -1,0 +1,26 @@
+# action.yml
+name: 'Grading Action for orgacomp'
+description: 'Run tests for each repo'
+inputs:
+  grader_path:
+    required: false
+    default: '.'
+  handin_path:
+    required: false
+    default: 'handin'
+  command:
+    description: 'What thing to run'
+    required: false
+    default: './grade $INPUT_GRADER_PATH $INPUT_HANDIN_PATH)'
+outputs:
+  invalida:
+    description: 'Indica con true o false si la corrida es inválida'
+  resultado:
+    description: 'El resultado'
+  detalle:
+    description: 'Una descripción'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.command }}
