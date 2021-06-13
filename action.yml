@@ -1,0 +1,20 @@
+# action.yml
+name: 'Grading Action for orgacomp'
+description: 'Run tests for each repo'
+inputs:
+  path:
+    description: 'Where to run things'
+    required: false
+    default: '{{ github.workspace }}'
+  command:
+    description: 'What thing to run'
+    required: false
+    default: 'make -k -C "{{ inputs.path }}'
+outputs:
+  result: # id of output
+    description: 'El resultado'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.target }}
