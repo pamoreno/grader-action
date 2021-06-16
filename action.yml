@@ -11,7 +11,7 @@ inputs:
   command:
     description: 'What thing to run'
     required: false
-    default: './grade $INPUT_GRADER_PATH $INPUT_HANDIN_PATH)'
+    default: './grade'
 outputs:
   invalida:
     description: 'Indica con true o false si la corrida es inválida'
@@ -22,5 +22,3 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.command }}

@@ -23,6 +23,6 @@ test_labfiles() {
     return 0
 }
 
-test_labfiles || exit 1
+#test_labfiles || exit 1
 
-exec $@
+exec $INPUT_COMMAND

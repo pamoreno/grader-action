@@ -1,8 +1,10 @@
 FROM orgacomp/common
 
+COPY entrypoint.sh /usr/bin/entrypoint.sh
+
 RUN apt update \ 
     && apt install -y \
-        clang-format \
+        #clang-format \
         gcc-7 \
         git \
         perl \
@@ -12,5 +14,5 @@ RUN apt update \
     && apt autoremove \
     && rm -rf /var/lib/apt/lists/*
 
-#ENTRYPOINT ["/bin/bash", "-c"]
-CMD ["/bin/bash", "-c"]
+ENTRYPOINT entrypoint.sh
+CMD ["/bin/bash"]
